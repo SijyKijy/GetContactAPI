@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GetContactAPI</name>
+    </assembly>
+    <members>
+        <member name="M:GetContactAPI.API.GetByPhone(System.String)">
+            <summary>
+            Возвращает основную информацию по номеру телефону
+            </summary>
+        </member>
+        <member name="M:GetContactAPI.API.GetTags(System.String)">
+            <summary>
+            Возвращает список тегов
+            </summary>
+        </member>
+        <member name="M:GetContactAPI.Crypt.StringToByteArray(System.String)">
+            <summary>
+            Преобразование строки в шестнадцатеричную
+            </summary>
+        </member>
+        <member name="M:GetContactAPI.Crypt.EncryptToSHA256(System.String,System.String)">
+            <summary>
+            Шифрование в SHA256
+            </summary>
+        </member>
+        <member name="M:GetContactAPI.Crypt.EncryptAes256ECB(System.String,System.String)">
+            <summary>
+            Шифрование в AES-256-ECB
+            </summary>
+        </member>
+        <member name="M:GetContactAPI.Crypt.DecryptAes256ECB(System.String,System.String)">
+            <summary>
+            Дешифровка AES-256-ECB
+            </summary>
+        </member>
+        <member name="T:GetContactAPI.Data">
+            <summary>
+            Главные данные для работы API
+            </summary>
+        </member>
+        <member name="P:GetContactAPI.Data.Token">
+            <summary>
+            Токен из конфиг-файла
+            </summary>
+        </member>
+        <member name="P:GetContactAPI.Data.AesKey">
+            <summary>
+            Зашифрованный ключ из конфиг-файла
+            </summary>
+        </member>
+        <member name="P:GetContactAPI.Data.Key">
+            <summary>
+            Ключ шифрования
+            </summary>
+        </member>
+        <member name="T:GetContactAPI.MainProfile">
+            <summary>
+            Основной профиль пользователя
+            </summary>
+        </member>
+        <member name="P:GetContactAPI.MainProfile.Name">
+            <summary>
+            Имена пользователя
+            </summary>
+        </member>
+        <member name="P:GetContactAPI.MainProfile.Country">
+            <summary>
+            Страна пользователя
+            </summary>
+        </member>
+        <member name="P:GetContactAPI.MainProfile.TagCount">
+            <summary>
+            Количество найденных тегов
+            </summary>
+        </member>
+        <member name="P:GetContactAPI.MainProfile.DefaultSearchCount">
+            <summary>
+            Количество оставшихся запросов / максимальных запросов
+            </summary>
+        </member>
+        <member name="P:GetContactAPI.MainProfile.TagSearchCount">
+            <summary>
+            Количество оставшихся запросов для тегов / максимальных запросов
+            </summary>
+        </member>
+        <member name="T:GetContactAPI.TagProfile">
+            <summary>
+            Профиль для тегов
+            </summary>
+        </member>
+        <member name="P:GetContactAPI.TagProfile.Tags">
+            <summary>
+            Список тегов
+            </summary>
+        </member>
+        <member name="P:GetContactAPI.TagProfile.DeletedTags">
+            <summary>
+            Количество удалённых тегов (доступно для премиума)
+            </summary>
+        </member>
+        <member name="M:GetContactAPI.Topic.CreateTopic(System.String,System.String,System.String)">
+            <summary>
+            Формирование зашифрованного запроса
+            </summary>
+            <returns>Получение дешифрованного запроса в формате json</returns>
+        </member>
+        <member name="M:GetContactAPI.Topic.SendPost(System.String,System.String,System.String,System.String)">
+            <summary>
+            Отправка готового запроса на сервер, с последующей дешифровкой
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -15,6 +15,9 @@ namespace GetContactAPI
             this.topic = new Topic(data);
         }
 
+        /// <summary>
+        /// Возвращает основную информацию по номеру телефону
+        /// </summary>
         public MainProfile GetByPhone(string phone)
         {
             if (String.IsNullOrEmpty(phone) || !Regex.IsMatch(phone, "\\+?\\d{11}")) throw new ArgumentException("Телефон заполнен неправильно");
@@ -30,6 +33,9 @@ namespace GetContactAPI
             };
         }
 
+        /// <summary>
+        /// Возвращает список тегов
+        /// </summary>
         public TagProfile GetTags(string phone)
         {
             if (String.IsNullOrEmpty(phone) || !Regex.IsMatch(phone, "\\+?\\d{11}")) throw new ArgumentException("Телефон заполнен неправильно");
