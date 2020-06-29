@@ -5,7 +5,7 @@
     <Authors>SijyKijy</Authors>
     <Product>GetContactAPI</Product>
     <Company />
-    <Description>Simple API for GetContact</Description>
+    <Description>Simple unofficial API for GetContact</Description>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

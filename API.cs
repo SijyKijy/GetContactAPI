@@ -8,7 +8,7 @@ namespace GetContactAPI
 {
     public class API
     {
-        private Topic topic;
+        private readonly Topic topic;
 
         public API(Data data)
         {
