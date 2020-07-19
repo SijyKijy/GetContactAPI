@@ -6,7 +6,7 @@
 > Работает только с номерами KZ,RU,BY,KG,UA.
 
 ## Установка
-1) Скачать [последнюю](https://github.com/SijyKijy/GetContactAPI/releases) версию библиотеки.
+1) Скачать [последнюю](https://github.com/SijyKijy/GetContactAPI/releases) ([NuGet](https://www.nuget.org/packages/GetContactAPI_SijyKijy/)) версию библиотеки.
 2) Добавить её к вашему проекту.
 
 ## Использование
