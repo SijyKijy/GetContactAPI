@@ -6,6 +6,14 @@
     <Product>GetContactAPI</Product>
     <Company />
     <Description>Simple unofficial API for GetContact</Description>
+    <Version>1.0.1</Version>
+    <PackageLicenseFile>README.md</PackageLicenseFile>
+    <RepositoryType></RepositoryType>
+    <RepositoryUrl>https://github.com/SijyKijy/GetContactAPI</RepositoryUrl>
+    <PackageTags>GetContact</PackageTags>
+    <Copyright>MIT License</Copyright>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageId>GetContactAPI_SijyKijy</PackageId>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -18,6 +26,13 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="README.md">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
