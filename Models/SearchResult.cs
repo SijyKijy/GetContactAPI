@@ -10,7 +10,7 @@ namespace GetContactAPI.Models
         [JsonProperty("profile")]
         public Profile Profile { get; protected set; }
         /// <summary>
-        /// Информация о подписке (пока что только лимиты)
+        /// Информация о подписке
         /// </summary>
         [JsonProperty("subscriptionInfo")]
         public SubscriptionInfo SubscriptionInfo { get; protected set; }

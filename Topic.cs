@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Specialized;
+using System.IO;
 using System.Net;
 using System.Text;
 using GetContactAPI.Models;
@@ -58,7 +59,24 @@ namespace GetContactAPI
                     {"X-Encrypted", "1"}
                 });
 
-                var rawJsonResponse = client.UploadString(url, data); // отправляем запрос
+                string rawJsonResponse;
+                try
+                {
+                    rawJsonResponse = client.UploadString(url, data); // отправляем запрос
+                }
+                catch (WebException webEx)
+                {
+                    // вытаскиваем ответ при ошибке
+                    using (var rs = webEx.Response.GetResponseStream())
+                    {
+                        if (rs == null)
+                            throw;
+
+                        using (var sr = new StreamReader(rs))
+                            rawJsonResponse = sr.ReadToEnd();
+                    }
+                }
+                
                 var rawResponse = JObject.Parse(rawJsonResponse);
                 if (!rawResponse.TryGetValue("data", StringComparison.Ordinal, out var rawData))
                     throw new ApplicationException("Failed to get \"data\" from response!");
