@@ -11,13 +11,11 @@ namespace GetContactAPI.Models
         [JsonProperty("tags")]
         public ReadOnlyCollection<TagData> Tags { get; protected set; }
 
-        /* Пока убрал т.к. там массив, а чё за тип данных в массиве я не знаю
-         *
-         * /// <summary>
+        /// <summary>
         /// Удалённые теги (доступно для премиума)
         /// </summary>
         [JsonProperty("deletedTags")]
-        public string DeletedTags { get; protected set; }*/
+        public ReadOnlyCollection<string> DeletedTags { get; protected set; }
 
         /// <summary>
         /// Количество удалённых тегов (доступно для премиума)
