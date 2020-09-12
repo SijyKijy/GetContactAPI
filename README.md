@@ -25,7 +25,7 @@ API api = new API(new Data(
     ));
 
 var phoneInfo = api.GetByPhone("+71234569780");
-// опционально: можно указать кастомные countryCode и source, если не знаете, просто оставьте как есть
+// опционально: можно указать кастомные countryCode
 
 if (phoneInfo.Meta.IsRequestError)
 {
