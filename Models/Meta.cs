@@ -9,19 +9,19 @@ namespace GetContactAPI.Models
         /// </summary>
         [JsonProperty("errorCode")]
         public string ErrorCode { get; protected set; }
-        
+
         /// <summary>
         /// Сообщение об ошибке, если всё ок, должно быть null
         /// </summary>
         [JsonProperty("errorMessage")]
         public string ErrorMessage { get; protected set; }
-        
+
         /// <summary>
         /// Хранит в себе тоже самое что и HTTP код ответа
         /// </summary>
         [JsonProperty("httpStatusCode")]
         public int HttpStatusCode { get; protected set; }
-        
+
         /// <summary>
         /// ID запроса
         /// </summary>

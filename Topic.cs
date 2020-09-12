@@ -1,11 +1,11 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using GetContactAPI.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Specialized;
 using System.IO;
 using System.Net;
 using System.Text;
-using GetContactAPI.Models;
-using Newtonsoft.Json;
 
 namespace GetContactAPI
 {
@@ -76,7 +76,7 @@ namespace GetContactAPI
                             rawJsonResponse = sr.ReadToEnd();
                     }
                 }
-                
+
                 var rawResponse = JObject.Parse(rawJsonResponse);
                 if (!rawResponse.TryGetValue("data", StringComparison.Ordinal, out var rawData))
                     throw new ApplicationException("Failed to get \"data\" from response!");

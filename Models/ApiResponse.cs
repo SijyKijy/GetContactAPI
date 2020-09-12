@@ -9,7 +9,7 @@ namespace GetContactAPI.Models
         /// </summary>
         [JsonProperty("result")]
         public T Response { get; protected set; }
-        
+
         /// <summary>
         /// Статус ответа
         /// </summary>
@@ -21,7 +21,7 @@ namespace GetContactAPI.Models
         /// </summary>
         [JsonProperty("subscriptionInfo")]
         public SubscriptionInfo SubscriptionInfo { get; protected set; }
-        
+
         /* При ошибке ещё бывает такое поле
          * adSettings - инфа по рекламе (не думаю что оно нужно)
          */

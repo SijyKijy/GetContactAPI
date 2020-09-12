@@ -1,5 +1,5 @@
-﻿using System.Collections.ObjectModel;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using System.Collections.ObjectModel;
 
 namespace GetContactAPI.Models
 {
@@ -10,7 +10,7 @@ namespace GetContactAPI.Models
         /// </summary>
         [JsonProperty("tags")]
         public ReadOnlyCollection<TagData> Tags { get; protected set; }
-        
+
         /* Пока убрал т.к. там массив, а чё за тип данных в массиве я не знаю
          *
          * /// <summary>
@@ -18,7 +18,7 @@ namespace GetContactAPI.Models
         /// </summary>
         [JsonProperty("deletedTags")]
         public string DeletedTags { get; protected set; }*/
-        
+
         /// <summary>
         /// Количество удалённых тегов (доступно для премиума)
         /// </summary>

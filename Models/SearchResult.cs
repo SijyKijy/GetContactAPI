@@ -14,10 +14,10 @@ namespace GetContactAPI.Models
         /// </summary>
         [JsonProperty("subscriptionInfo")]
         public SubscriptionInfo SubscriptionInfo { get; protected set; }
-        
+
         [JsonProperty("spamInfo")]
         public SpamInfo SpamInfo { get; protected set; }
-        
+
         [JsonProperty("searchedHimself")]
         public bool SearchedHimself { get; protected set; }
     }

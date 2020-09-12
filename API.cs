@@ -1,9 +1,6 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using GetContactAPI.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text.RegularExpressions;
-using GetContactAPI.Models;
 
 namespace GetContactAPI
 {
