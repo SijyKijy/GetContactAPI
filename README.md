@@ -23,7 +23,6 @@ API api = new API(new Data(
    "token",
    "aes_key"
     ));
-// опционально: можно заменить DeviceId, Os, AppVersion используя методы до вызова метода Build
 
 var phoneInfo = api.GetByPhone("+71234569780");
 // опционально: можно указать кастомные countryCode и source, если не знаете, просто оставьте как есть
