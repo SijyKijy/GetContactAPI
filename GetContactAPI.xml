@@ -4,12 +4,12 @@
         <name>GetContactAPI</name>
     </assembly>
     <members>
-        <member name="M:GetContactAPI.API.GetByPhone(System.String)">
+        <member name="M:GetContactAPI.API.GetByPhone(System.String,System.String)">
             <summary>
             Возвращает основную информацию по номеру телефону
             </summary>
         </member>
-        <member name="M:GetContactAPI.API.GetTags(System.String)">
+        <member name="M:GetContactAPI.API.GetTags(System.String,System.String)">
             <summary>
             Возвращает список тегов
             </summary>
@@ -54,58 +54,150 @@
             Ключ шифрования
             </summary>
         </member>
-        <member name="T:GetContactAPI.MainProfile">
+        <member name="P:GetContactAPI.Models.ApiResponse`1.Response">
             <summary>
-            Основной профиль пользователя
+            Результат
             </summary>
         </member>
-        <member name="P:GetContactAPI.MainProfile.Name">
+        <member name="P:GetContactAPI.Models.ApiResponse`1.Meta">
             <summary>
-            Имена пользователя
+            Статус ответа
             </summary>
         </member>
-        <member name="P:GetContactAPI.MainProfile.Country">
+        <member name="P:GetContactAPI.Models.ApiResponse`1.SubscriptionInfo">
             <summary>
-            Страна пользователя
+            Информация о подписке (вот тут оно на сколько понимаю, бывает только когда ошибка)
             </summary>
         </member>
-        <member name="P:GetContactAPI.MainProfile.TagCount">
-            <summary>
-            Количество найденных тегов
-            </summary>
-        </member>
-        <member name="P:GetContactAPI.MainProfile.DefaultSearchCount">
-            <summary>
-            Количество оставшихся запросов / максимальных запросов
-            </summary>
-        </member>
-        <member name="P:GetContactAPI.MainProfile.TagSearchCount">
-            <summary>
-            Количество оставшихся запросов для тегов / максимальных запросов
-            </summary>
-        </member>
-        <member name="T:GetContactAPI.TagProfile">
-            <summary>
-            Профиль для тегов
-            </summary>
-        </member>
-        <member name="P:GetContactAPI.TagProfile.Tags">
+        <member name="P:GetContactAPI.Models.DetailsResult.Tags">
             <summary>
             Список тегов
             </summary>
         </member>
-        <member name="P:GetContactAPI.TagProfile.DeletedTags">
+        <member name="P:GetContactAPI.Models.DetailsResult.DeletedTags">
+            <summary>
+            Удалённые теги (доступно для премиума)
+            </summary>
+        </member>
+        <member name="P:GetContactAPI.Models.DetailsResult.DeletedTagCount">
             <summary>
             Количество удалённых тегов (доступно для премиума)
             </summary>
         </member>
-        <member name="M:GetContactAPI.Topic.CreateTopic(System.String,System.String,System.String)">
+        <member name="P:GetContactAPI.Models.Meta.ErrorCode">
+            <summary>
+            Код ошибки, если всё ок, должно быть null
+            </summary>
+        </member>
+        <member name="P:GetContactAPI.Models.Meta.ErrorMessage">
+            <summary>
+            Сообщение об ошибке, если всё ок, должно быть null
+            </summary>
+        </member>
+        <member name="P:GetContactAPI.Models.Meta.HttpStatusCode">
+            <summary>
+            Хранит в себе тоже самое что и HTTP код ответа
+            </summary>
+        </member>
+        <member name="P:GetContactAPI.Models.Meta.RequestId">
+            <summary>
+            ID запроса
+            </summary>
+        </member>
+        <member name="P:GetContactAPI.Models.Meta.IsRequestError">
+            <summary>
+            Произошла ошибка или нет
+            </summary>
+        </member>
+        <member name="T:GetContactAPI.Models.Profile">
+            <summary>
+            Основной профиль пользователя
+            </summary>
+        </member>
+        <member name="P:GetContactAPI.Models.Profile.DisplayName">
+            <summary>
+            Имена пользователя
+            </summary>
+        </member>
+        <member name="P:GetContactAPI.Models.Profile.Name">
+            <summary>
+            Имя
+            <para/>Лучше брать значение из <see cref="P:GetContactAPI.Models.Profile.DisplayName"/>, если там ничего не будет, то смотреть тут и в <seealso cref="P:GetContactAPI.Models.Profile.Surname"/>
+            </summary>
+        </member>
+        <member name="P:GetContactAPI.Models.Profile.Surname">
+            <summary>
+            Фамилия
+            <para/>Лучше брать значение из <see cref="P:GetContactAPI.Models.Profile.DisplayName"/>, если там ничего не будет, то смотреть тут и в <seealso cref="P:GetContactAPI.Models.Profile.Name"/>
+            </summary>
+        </member>
+        <member name="P:GetContactAPI.Models.Profile.Country">
+            <summary>
+            Страна пользователя
+            </summary>
+        </member>
+        <member name="P:GetContactAPI.Models.Profile.TagCount">
+            <summary>
+            Количество найденных тегов
+            </summary>
+        </member>
+        <member name="P:GetContactAPI.Models.Profile.PhoneNumber">
+            <summary>
+            Номер телефона
+            </summary>
+        </member>
+        <member name="P:GetContactAPI.Models.Profile.ProfileImage">
+            <summary>
+            Картинка профиля, не уверен что бывает
+            </summary>
+        </member>
+        <member name="P:GetContactAPI.Models.SearchResult.Profile">
+            <summary>
+            Основной профиль пользователя
+            </summary>
+        </member>
+        <member name="P:GetContactAPI.Models.SearchResult.SubscriptionInfo">
+            <summary>
+            Информация о подписке
+            </summary>
+        </member>
+        <member name="P:GetContactAPI.Models.SubscriptionInfo.Usage">
+            <summary>
+            Лимиты
+            </summary>
+        </member>
+        <member name="P:GetContactAPI.Models.SubscriptionUsage.Search">
+            <summary>
+            Лимиты на поиск
+            </summary>
+        </member>
+        <member name="P:GetContactAPI.Models.SubscriptionUsage.NumberDetail">
+            <summary>
+            Лимиты на теги/детали о номере
+            </summary>
+        </member>
+        <member name="P:GetContactAPI.Models.SubscriptionUsageInfo.RemainingCount">
+            <summary>
+            Количество оставшихся запросов
+            </summary>
+        </member>
+        <member name="P:GetContactAPI.Models.SubscriptionUsageInfo.Limit">
+            <summary>
+            Максимум запросов
+            </summary>
+        </member>
+        <member name="P:GetContactAPI.Models.TagData.Tag">
+            <summary>
+            Тег
+            </summary>
+        </member>
+        <member name="M:GetContactAPI.Topic.CreateTopic``1(System.String,System.String,System.String,System.String)">
             <summary>
             Формирование зашифрованного запроса
             </summary>
             <returns>Получение дешифрованного запроса в формате json</returns>
         </member>
-        <member name="M:GetContactAPI.Topic.SendPost(System.String,System.String,System.String,System.String)">
+        <member name="M:GetContactAPI.Topic.SendPost``1(System.String,System.String,System.String,System.String)">
             <summary>
             Отправка готового запроса на сервер, с последующей дешифровкой
             </summary>
