@@ -11,11 +11,11 @@ namespace GetContactAPI
 {
     internal class Topic
     {
-        private readonly Data aData;
+        private readonly Data _aData;
 
         public Topic(Data data)
         {
-            aData = data;
+            _aData = data;
         }
 
         /// <summary>
@@ -29,12 +29,12 @@ namespace GetContactAPI
             {
                 countryCode = countryCode ?? "RU",
                 source,
-                token = aData.Token,
+                token = _aData.Token,
                 phoneNumber = phone
             };
             string req = JsonConvert.SerializeObject(reqObj, Formatting.None);
-            string sig = Crypt.EncryptToSHA256(ts.Replace("\r\n", "") + "-" + req, aData.Key); // signature
-            string crypt = Crypt.EncryptAes256ECB(req, aData.AesKey);
+            string sig = Crypt.EncryptToSHA256($"{ts.Replace("\r\n", "")}-{req}", _aData.Key); // signature
+            string crypt = Crypt.EncryptAes256ECB(req, _aData.AesKey);
 
             return SendPost<T>(url, "{\"data\":\"" + crypt + "\"}", ts, sig);
         }
@@ -44,12 +44,12 @@ namespace GetContactAPI
         /// </summary>
         private ApiResponse<T> SendPost<T>(string url, string data, string ts, string sig)
         {
-            using (WebClient client = new WebClient { Encoding = Encoding.UTF8 })
+            using (var client = new WebClient { Encoding = Encoding.UTF8 })
             {
                 client.Headers.Add(new NameValueCollection()
                 {
                     {"X-App-Version", "4.9.1"},
-                    {"X-Token", aData.Token},
+                    {"X-Token", _aData.Token},
                     {"X-Os", "android 5.0"},
                     {"X-Client-Device-Id", "14130e29cebe9c39"},
                     {"Content-Type", "application/json; charset=utf-8"},
@@ -67,7 +67,7 @@ namespace GetContactAPI
                 catch (WebException webEx)
                 {
                     // вытаскиваем ответ при ошибке
-                    using (var rs = webEx.Response.GetResponseStream())
+                    using (Stream rs = webEx.Response.GetResponseStream())
                     {
                         if (rs == null)
                             throw;
@@ -77,11 +77,11 @@ namespace GetContactAPI
                     }
                 }
 
-                var rawResponse = JObject.Parse(rawJsonResponse);
+                JObject rawResponse = JObject.Parse(rawJsonResponse);
                 if (!rawResponse.TryGetValue("data", StringComparison.Ordinal, out var rawData))
                     throw new ApplicationException("Failed to get \"data\" from response!");
 
-                var decryptedResponse = Crypt.DecryptAes256ECB(rawData.ToString(), aData.AesKey); // расшифровывем
+                string decryptedResponse = Crypt.DecryptAes256ECB(rawData.ToString(), _aData.AesKey); // расшифровывем
                 return JsonConvert.DeserializeObject<ApiResponse<T>>(decryptedResponse);
             }
         }

@@ -18,7 +18,7 @@ namespace GetContactAPI.Models
         public bool IsTrialUsed { get; protected set; }
 
         [JsonProperty("premiumType")]
-        public string PremiumType { get; protected set; } // кому не впадлу, сделайте Enum'ом, только вытащите все типы
+        public string PremiumType { get; protected set; }
 
         [JsonProperty("premiumTypeName")]
         public string PremiumTypeName { get; protected set; }

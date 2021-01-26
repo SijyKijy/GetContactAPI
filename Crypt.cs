@@ -67,7 +67,7 @@ namespace GetContactAPI
 
                 ICryptoTransform transform = aes.CreateDecryptor();
                 byte[] encBytes = Convert.FromBase64String((string)str);
-                return ASCIIEncoding.ASCII.GetString(transform.TransformFinalBlock(encBytes, 0, encBytes.Length));
+                return Encoding.ASCII.GetString(transform.TransformFinalBlock(encBytes, 0, encBytes.Length));
             }
         }
     }

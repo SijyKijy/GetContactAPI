@@ -4,11 +4,11 @@ using System.Text.RegularExpressions;
 
 namespace GetContactAPI
 {
-    public class API
+    public class Api
     {
         private readonly Topic _topic;
 
-        public API(Data data)
+        public Api(Data data)
         {
             _topic = new Topic(data);
         }
@@ -18,7 +18,7 @@ namespace GetContactAPI
         /// </summary>
         public ApiResponse<SearchResult> GetByPhone(string phone, string countryCode = null)
         {
-            if (String.IsNullOrEmpty(phone) || !Regex.IsMatch(phone, "\\+?\\d{11}")) throw new ArgumentException("Телефон заполнен неправильно");
+            if (string.IsNullOrEmpty(phone) || !Regex.IsMatch(phone, "\\+?\\d{11}")) throw new ArgumentException("Телефон заполнен неправильно");
             return _topic.CreateTopic<SearchResult>("https://pbssrv-centralevents.com/v2.5/search", "search", phone, countryCode);
         }
 
