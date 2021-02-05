@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
+using System.Text.Json.Serialization;
 
 namespace GetContactAPI.Models
 {
@@ -8,28 +8,28 @@ namespace GetContactAPI.Models
         /// <summary>
         /// Лимиты
         /// </summary>
-        [JsonProperty("usage")]
+        [JsonPropertyName("usage")]
         public SubscriptionUsage Usage { get; protected set; }
 
-        [JsonProperty("isPro")]
+        [JsonPropertyName("isPro")]
         public bool IsPro { get; protected set; }
 
-        [JsonProperty("isTrialUsed")]
+        [JsonPropertyName("isTrialUsed")]
         public bool IsTrialUsed { get; protected set; }
 
-        [JsonProperty("premiumType")]
+        [JsonPropertyName("premiumType")]
         public string PremiumType { get; protected set; }
 
-        [JsonProperty("premiumTypeName")]
+        [JsonPropertyName("premiumTypeName")]
         public string PremiumTypeName { get; protected set; }
 
-        [JsonProperty("receiptEndDate")]
+        [JsonPropertyName("receiptEndDate")]
         public DateTime ReceiptEndDate { get; protected set; }
 
-        [JsonProperty("receiptStartDate")]
+        [JsonPropertyName("receiptStartDate")]
         public DateTime ReceiptStartDate { get; protected set; }
 
-        [JsonProperty("renewDate")]
+        [JsonPropertyName("renewDate")]
         public DateTime RenewDate { get; protected set; }
     }
 }

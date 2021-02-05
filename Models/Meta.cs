@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace GetContactAPI.Models
 {
@@ -7,25 +7,25 @@ namespace GetContactAPI.Models
         /// <summary>
         /// Код ошибки, если всё ок, должно быть null
         /// </summary>
-        [JsonProperty("errorCode")]
+        [JsonPropertyName("errorCode")]
         public string ErrorCode { get; protected set; }
 
         /// <summary>
         /// Сообщение об ошибке, если всё ок, должно быть null
         /// </summary>
-        [JsonProperty("errorMessage")]
+        [JsonPropertyName("errorMessage")]
         public string ErrorMessage { get; protected set; }
 
         /// <summary>
         /// Хранит в себе тоже самое что и HTTP код ответа
         /// </summary>
-        [JsonProperty("httpStatusCode")]
+        [JsonPropertyName("httpStatusCode")]
         public int HttpStatusCode { get; protected set; }
 
         /// <summary>
         /// ID запроса
         /// </summary>
-        [JsonProperty("requestId")]
+        [JsonPropertyName("requestId")]
         public string RequestId { get; protected set; }
 
         /// <summary>

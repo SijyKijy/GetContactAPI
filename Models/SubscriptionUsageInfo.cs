@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace GetContactAPI.Models
 {
@@ -7,22 +7,22 @@ namespace GetContactAPI.Models
         /// <summary>
         /// Количество оставшихся запросов
         /// </summary>
-        [JsonProperty("remainingCount")]
+        [JsonPropertyName("remainingCount")]
         public int RemainingCount { get; protected set; }
 
         /// <summary>
         /// Максимум запросов
         /// </summary>
-        [JsonProperty("limit")]
+        [JsonPropertyName("limit")]
         public int Limit { get; protected set; }
 
-        [JsonProperty("isColorRed")]
+        [JsonPropertyName("isColorRed")]
         public bool IsColorRed { get; protected set; }
 
-        [JsonProperty("showOffer")]
+        [JsonPropertyName("showOffer")]
         public bool ShowOffer { get; protected set; }
 
-        [JsonProperty("showPackages")]
+        [JsonPropertyName("showPackages")]
         public bool ShowPackages { get; protected set; }
     }
 }

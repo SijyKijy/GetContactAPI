@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace GetContactAPI.Models
 {
@@ -7,19 +7,19 @@ namespace GetContactAPI.Models
         /// <summary>
         /// Результат
         /// </summary>
-        [JsonProperty("result")]
+        [JsonPropertyName("result")]
         public T Response { get; protected set; }
 
         /// <summary>
         /// Статус ответа
         /// </summary>
-        [JsonProperty("meta")]
+        [JsonPropertyName("meta")]
         public Meta Meta { get; protected set; }
 
         /// <summary>
         /// Информация о подписке (вот тут оно на сколько понимаю, бывает только когда ошибка)
         /// </summary>
-        [JsonProperty("subscriptionInfo")]
+        [JsonPropertyName("subscriptionInfo")]
         public SubscriptionInfo SubscriptionInfo { get; protected set; }
     }
 }

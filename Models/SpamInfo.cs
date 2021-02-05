@@ -1,13 +1,13 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace GetContactAPI.Models
 {
     public class SpamInfo
     {
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; protected set; }
 
-        [JsonProperty("degree")]
+        [JsonPropertyName("degree")]
         public string Degree { get; protected set; }
     }
 }

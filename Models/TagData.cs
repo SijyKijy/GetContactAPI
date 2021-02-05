@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace GetContactAPI.Models
 {
@@ -7,19 +7,19 @@ namespace GetContactAPI.Models
         /// <summary>
         /// Тег
         /// </summary>
-        [JsonProperty("tag")]
+        [JsonPropertyName("tag")]
         public string Tag { get; protected set; }
 
-        [JsonProperty("count")]
+        [JsonPropertyName("count")]
         public int Count { get; protected set; }
 
-        [JsonProperty("isNew")]
+        [JsonPropertyName("isNew")]
         public bool IsNew { get; protected set; }
 
-        [JsonProperty("removable")]
+        [JsonPropertyName("removable")]
         public bool Removable { get; protected set; }
 
-        [JsonProperty("askReason")]
+        [JsonPropertyName("askReason")]
         public bool AskReason { get; protected set; }
     }
 }
