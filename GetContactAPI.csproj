@@ -13,7 +13,6 @@
     <PackageTags>GetContact</PackageTags>
     <Copyright>MIT License</Copyright>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <PackageId>GetContactAPI_SijyKijy</PackageId>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
