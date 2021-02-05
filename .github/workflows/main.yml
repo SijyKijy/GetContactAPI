@@ -1,33 +1,19 @@
-name: CI
-
+name: publish to nuget
 on:
   push:
     branches:
       - master
 jobs:
-  build:
-    env:
-      repoName: "GetContactAPI" 
-    runs-on: windows-latest
- 
+  publish:
+    name: build, pack & publish
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-      name: Checkout Code
-     
-    - name: Setup MSBuild Path
-      uses: warrenbuckley/Setup-MSBuild@v1
-       
-    - name: Setup NuGet
-      uses: NuGet/setup-nuget@v1.0.2
-     
-    - name: Restore NuGet Packages
-      run: nuget restore ${{ env.repoName }}.sln
- 
-    - name: Build
-      run: msbuild ${{ env.repoName }}.sln /p:Configuration=Release
- 
-    - name: Create Artifact
-      uses: actions/upload-artifact@v1.0.0
-      with:
-        name: ${{ env.repoName }}
-        path: bin\Release
+      - uses: actions/checkout@v2
+
+      - name: publish on version change
+        id: publish_nuget
+        uses: rohith/publish-nuget@v2
+        with:
+          PROJECT_FILE_PATH: ./GetContactAPI.csproj
+          TAG_FORMAT: v*
+          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
