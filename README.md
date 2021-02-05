@@ -7,7 +7,7 @@
 ##### Но это не точно, можно попробовать указать страну (countryCode в методе GetByPhone) в формате [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
 
 ## Установка
-1) Скачать [последнюю](https://github.com/SijyKijy/GetContactAPI/releases) ([NuGet](https://www.nuget.org/packages/GetContactAPI_SijyKijy/)) версию библиотеки.
+1) Скачать [последнюю](https://www.nuget.org/packages/GetContactAPI/) версию библиотеки.
 2) Добавить её к вашему проекту.
 
 ## Использование
