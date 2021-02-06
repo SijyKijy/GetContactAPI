@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
@@ -28,7 +29,8 @@ namespace GetContactAPI
         /// <returns>Получение дешифрованного запроса в формате json</returns>
         public Task<ApiResponse<T>> CreateTopicAsync<T>(string url, string source, string phone, string countryCode, CancellationToken ct)
         {
-            string timestamp = ((int)(DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds).ToString(); // timespan (Unix)
+            string timestamp = ((DateTimeOffset)DateTime.Now).ToUnixTimeSeconds().ToString(); // timespan (Unix)
+            string str = ((int)(DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds).ToString();
             var reqObj = new
             {
                 countryCode = countryCode ?? "RU",
@@ -64,18 +66,18 @@ namespace GetContactAPI
             request.Headers.Add("X-Req-Signature", signature);
             request.Headers.Add("X-Encrypted", "1");
 
-            using var response = await client.SendAsync(request, ct).ConfigureAwait(false);
+            using HttpResponseMessage response = await client.SendAsync(request, ct).ConfigureAwait(false);
 
             if (!response.IsSuccessStatusCode)
                 throw new HttpRequestException(response.ReasonPhrase);
 
-            var content = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-            var rawResponse = await JsonDocument.ParseAsync(content, cancellationToken: ct).ConfigureAwait(false);
+            using Stream content = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
+            using JsonDocument rawResponse = await JsonDocument.ParseAsync(content, cancellationToken: ct).ConfigureAwait(false);
 
-            if (!rawResponse.RootElement.TryGetProperty("data", out var rawData))
+            if (!rawResponse.RootElement.TryGetProperty("data", out JsonElement rawData))
                 throw new ApplicationException("Failed to get \"data\" from response!");
 
-            var decryptedResponse = Cryptography.DecryptAes256ECB(rawData.ToString(), _data.AesKey);
+            string decryptedResponse = Cryptography.DecryptAes256ECB(rawData.ToString(), _data.AesKey);
             return JsonSerializer.Deserialize<ApiResponse<T>>(decryptedResponse, _jsonOptions);
         }
     }
