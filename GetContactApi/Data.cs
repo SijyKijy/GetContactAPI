@@ -1,4 +1,6 @@
-﻿namespace GetContactAPI
+﻿using System;
+
+namespace GetContactAPI
 {
     /// <summary>
     /// Главные данные для работы API
@@ -13,6 +15,9 @@
         /// <summary>
         /// Зашифрованный ключ из конфиг-файла
         /// </summary>
+        /// <remarks>
+        /// Длина - 64 символа
+        /// </remarks>
         public string AesKey { get; }
 
         /// <summary>
@@ -24,6 +29,7 @@
         {
             Token = token;
             AesKey = aesKey;
+            Validate();
         }
 
         public Data(string token, string aesKey, string key)
@@ -31,6 +37,16 @@
             Token = token;
             AesKey = aesKey;
             Key = key;
+            Validate();
+        }
+
+        private void Validate()
+        {
+            if (string.IsNullOrWhiteSpace(Token))
+                throw new ArgumentNullException("Token is empty or invalid");
+
+            if (string.IsNullOrWhiteSpace(AesKey) || AesKey.Length != 64)
+                throw new ArgumentNullException("AES key is empty or invalid");
         }
     }
 }

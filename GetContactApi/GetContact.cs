@@ -6,15 +6,15 @@ using GetContactAPI.Models;
 
 namespace GetContactAPI
 {
-    public class GetContactAPI
+    public class GetContact
     {
         private readonly Topic _topic;
         private readonly Regex _phoneRegex;
 
-        public GetContactAPI(Data data)
+        public GetContact(Data data)
         {
             _topic = new Topic(data);
-            _phoneRegex = new("\\+?\\d{11}", RegexOptions.Compiled);
+            _phoneRegex = new("\\+?\\d{10,11}", RegexOptions.Compiled);
         }
 
         /// <summary>

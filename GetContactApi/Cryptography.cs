@@ -12,7 +12,7 @@ namespace GetContactAPI
         internal static byte[] StringToByteArray(string hex)
         {
             if (hex.Length % 2 == 1)
-                throw new ArgumentException("Шестнадцатеричная строка должна иметь четное количество цифр!");
+                throw new ArgumentException("A hex string must have an even number of digits!");
 
             byte[] arr = new byte[hex.Length >> 1];
 

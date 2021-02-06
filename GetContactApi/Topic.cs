@@ -29,8 +29,9 @@ namespace GetContactAPI
         /// <returns>Получение дешифрованного запроса в формате json</returns>
         public Task<ApiResponse<T>> CreateTopicAsync<T>(string url, string source, string phone, string countryCode, CancellationToken ct)
         {
-            string timestamp = ((DateTimeOffset)DateTime.Now).ToUnixTimeSeconds().ToString(); // timespan (Unix)
-            string str = ((int)(DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds).ToString();
+            //string timestamp = ((DateTimeOffset)DateTime.Now).ToUnixTimeSeconds().ToString(); // timespan (Unix)
+            string timestamp = ((int)(DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds).ToString();
+
             var reqObj = new
             {
                 countryCode = countryCode ?? "RU",
@@ -38,7 +39,6 @@ namespace GetContactAPI
                 token = _data.Token,
                 phoneNumber = phone
             };
-
 
             string req = JsonSerializer.Serialize(reqObj, options: _jsonOptions);
             string signature = Cryptography.EncryptToSHA256(timestamp.Replace("\r\n", "") + "-" + req, _data.Key); // signature
