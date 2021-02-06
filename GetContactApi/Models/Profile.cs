@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace GetContactAPI.Models
 {
@@ -10,45 +10,45 @@ namespace GetContactAPI.Models
         /// <summary>
         /// Имена пользователя
         /// </summary>
-        [JsonProperty("displayName")]
+        [JsonPropertyName("displayName")]
         public string DisplayName { get; protected set; }
 
         /// <summary>
         /// Имя
         /// <para/>Лучше брать значение из <see cref="DisplayName"/>, если там ничего не будет, то смотреть тут и в <seealso cref="Surname"/>
         /// </summary>
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; protected set; }
 
         /// <summary>
         /// Фамилия
         /// <para/>Лучше брать значение из <see cref="DisplayName"/>, если там ничего не будет, то смотреть тут и в <seealso cref="Name"/>
         /// </summary>
-        [JsonProperty("surname")]
+        [JsonPropertyName("surname")]
         public string Surname { get; protected set; }
 
         /// <summary>
         /// Страна пользователя
         /// </summary>
-        [JsonProperty("countryCode")]
+        [JsonPropertyName("countryCode")]
         public string Country { get; protected set; }
 
         /// <summary>
         /// Количество найденных тегов
         /// </summary>
-        [JsonProperty("tagCount")]
+        [JsonPropertyName("tagCount")]
         public int? TagCount { get; protected set; }
 
         /// <summary>
         /// Номер телефона
         /// </summary>
-        [JsonProperty("phoneNumber")]
+        [JsonPropertyName("phoneNumber")]
         public string PhoneNumber { get; protected set; }
 
         /// <summary>
         /// Картинка профиля, не уверен что бывает
         /// </summary>
-        [JsonProperty("profileImage")]
+        [JsonPropertyName("profileImage")]
         public string ProfileImage { get; protected set; }
     }
 }

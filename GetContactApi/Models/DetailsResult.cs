@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
+using System.Text.Json.Serialization;
 
 namespace GetContactAPI.Models
 {
@@ -8,19 +8,19 @@ namespace GetContactAPI.Models
         /// <summary>
         /// Список тегов
         /// </summary>
-        [JsonProperty("tags")]
+        [JsonPropertyName("tags")]
         public ReadOnlyCollection<TagData> Tags { get; protected set; }
 
         /// <summary>
         /// Удалённые теги (доступно для премиума)
         /// </summary>
-        [JsonProperty("deletedTags")]
+        [JsonPropertyName("deletedTags")]
         public ReadOnlyCollection<string> DeletedTags { get; protected set; }
 
         /// <summary>
         /// Количество удалённых тегов (доступно для премиума)
         /// </summary>
-        [JsonProperty("deletedTagCount")]
+        [JsonPropertyName("deletedTagCount")]
         public int DeletedTagCount { get; protected set; }
     }
 }

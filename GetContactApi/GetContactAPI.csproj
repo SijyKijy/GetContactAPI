@@ -4,15 +4,14 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <Authors>SijyKijy</Authors>
     <Product>GetContactAPI</Product>
-    <Company />
     <Description>Simple unofficial API for GetContact</Description>
-    <Version>1.0.1</Version>
-    <PackageLicenseFile>README.md</PackageLicenseFile>
-    <RepositoryType></RepositoryType>
     <RepositoryUrl>https://github.com/SijyKijy/GetContactAPI</RepositoryUrl>
     <PackageTags>GetContact</PackageTags>
     <Copyright>MIT License</Copyright>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageLicenseFile>README.md</PackageLicenseFile>
+    <LangVersion>9.0</LangVersion>
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -24,14 +23,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="README.md">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
+    <PackageReference Include="System.Text.Json" Version="5.0.1" />
   </ItemGroup>
 
 </Project>

@@ -4,23 +4,22 @@ using System.Text;
 
 namespace GetContactAPI
 {
-    internal static class Crypt
+    internal static class Cryptography
     {
         /// <summary>
         /// Преобразование строки в шестнадцатеричную
         /// </summary>
-        public static byte[] StringToByteArray(string hex)
+        internal static byte[] StringToByteArray(string hex)
         {
-            if (hex.Length % 2 == 1) throw new ArgumentException("Шестнадцатеричная строка должна иметь четное количество цифр!");
-            byte[] arr = new byte[hex.Length >> 1];
-            for (int i = 0; i < hex.Length >> 1; ++i) arr[i] = (byte)((GetHexVal(hex[i << 1]) << 4) + (GetHexVal(hex[(i << 1) + 1])));
-            return arr;
-        }
+            if (hex.Length % 2 == 1)
+                throw new ArgumentException("A hex string must have an even number of digits!");
 
-        private static int GetHexVal(char hex)
-        {
-            int val = (int)hex;
-            return val - (val < 58 ? 48 : (val < 97 ? 55 : 87));
+            byte[] arr = new byte[hex.Length >> 1];
+
+            for (int i = 0; i < hex.Length >> 1; ++i)
+                arr[i] = (byte)((GetHexVal(hex[i << 1]) << 4) + (GetHexVal(hex[(i << 1) + 1])));
+
+            return arr;
         }
 
         /// <summary>
@@ -39,7 +38,7 @@ namespace GetContactAPI
         /// <summary>
         /// Шифрование в AES-256-ECB
         /// </summary>
-        public static string EncryptAes256ECB(string str, string aesKey)
+        internal static string EncryptAes256ECB(string str, string aesKey)
         {
             using (Aes aes = Aes.Create())
             {
@@ -57,7 +56,7 @@ namespace GetContactAPI
         /// <summary>
         /// Дешифровка AES-256-ECB
         /// </summary>
-        public static string DecryptAes256ECB(string str, string aesKey)
+        internal static string DecryptAes256ECB(string str, string aesKey)
         {
             using (Aes aes = Aes.Create())
             {
@@ -66,9 +65,15 @@ namespace GetContactAPI
                 aes.Key = StringToByteArray(aesKey);
 
                 ICryptoTransform transform = aes.CreateDecryptor();
-                byte[] encBytes = Convert.FromBase64String((string)str);
-                return ASCIIEncoding.ASCII.GetString(transform.TransformFinalBlock(encBytes, 0, encBytes.Length));
+                byte[] encBytes = Convert.FromBase64String(str);
+                return Encoding.ASCII.GetString(transform.TransformFinalBlock(encBytes, 0, encBytes.Length));
             }
+        }
+
+        private static int GetHexVal(char hex)
+        {
+            int val = hex;
+            return val - (val < 58 ? 48 : (val < 97 ? 55 : 87));
         }
     }
 }

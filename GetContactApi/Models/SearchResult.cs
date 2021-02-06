@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace GetContactAPI.Models
 {
@@ -7,18 +7,18 @@ namespace GetContactAPI.Models
         /// <summary>
         /// Основной профиль пользователя
         /// </summary>
-        [JsonProperty("profile")]
+        [JsonPropertyName("profile")]
         public Profile Profile { get; protected set; }
         /// <summary>
         /// Информация о подписке
         /// </summary>
-        [JsonProperty("subscriptionInfo")]
+        [JsonPropertyName("subscriptionInfo")]
         public SubscriptionInfo SubscriptionInfo { get; protected set; }
 
-        [JsonProperty("spamInfo")]
+        [JsonPropertyName("spamInfo")]
         public SpamInfo SpamInfo { get; protected set; }
 
-        [JsonProperty("searchedHimself")]
+        [JsonPropertyName("searchedHimself")]
         public bool SearchedHimself { get; protected set; }
     }
 }
